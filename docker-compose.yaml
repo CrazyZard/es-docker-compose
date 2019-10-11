@@ -7,16 +7,6 @@ services:
       - "9100:9000"
     command:
       - -Dhosts.0.host=http://elasticsearch:9200
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.3.0
-    container_name: kibana7
-    environment:
-      - I18N_LOCALE=zh-CN
-      - XPACK_GRAPH_ENABLED=true
-      - TIMELION_ENABLED=true
-      - XPACK_MONITORING_COLLECTION_ENABLED="true"
-    ports:
-      - "5601:5601"
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
     container_name: es7_01
@@ -51,7 +41,16 @@ services:
         hard: -1
     volumes:
       - es73data2:/usr/share/elasticsearch/data
-volumes:
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.0
+    container_name: kibana7
+    environment:
+      - I18N_LOCALE=zh-CN
+      - XPACK_GRAPH_ENABLED=true
+      - TIMELION_ENABLED=true
+      - XPACK_MONITORING_COLLECTION_ENABLED="true"
+    ports:
+      - "5601:5601"volumes:
   es73data1:
     driver: local
   es73data2:
