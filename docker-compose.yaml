@@ -51,7 +51,7 @@ services:
       - XPACK_MONITORING_COLLECTION_ENABLED="true"
     ports:
       - "5601:5601"
- volumes:
+volumes:
   es73data1:
     driver: local
   es73data2:
